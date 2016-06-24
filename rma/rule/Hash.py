@@ -40,10 +40,10 @@ class HashStatEntry(object):
             raise Exception('Panic', 'Unknown encoding %s in %s' % (self.encoding, key_name))
 
         self.valueUsedBytes = sum(m)
-        self.fieldMin = min(args2)
-        self.fieldMax = max(args3)
-        self.valueMin = min(m2)
-        self.valueMax = max(m3)
+        self.fieldMin = min(args2 or [0])
+        self.fieldMax = max(args3 or [0])
+        self.valueMin = min(m2 or [0])
+        self.valueMax = max(m3 or [0])
 
 
 class HashAggregator(object):
