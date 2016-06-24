@@ -40,8 +40,19 @@ class HashStatEntry(object):
             raise Exception('Panic', 'Unknown encoding %s in %s' % (self.encoding, key_name))
 
         self.valueUsedBytes = sum(m)
-        self.fieldMin = min(args2 or [0])
-        self.fieldMax = max(args3 or [0])
+        
+        try:
+            self.fieldMin = min(args2 or [0])
+        except Exception: 
+            self.fieldMin = 0
+            print(args2)
+        
+        try:
+            self.fieldMax = max(args3 or [0])
+        except Exception: 
+            self.fieldMax = 0
+            print(args3)
+
         self.valueMin = min(m2 or [0])
         self.valueMax = max(m3 or [0])
 
