@@ -100,7 +100,7 @@ class ValueString(object):
             aligned = sum(aligned_bytes)
             preferred_encoding = pref_encoding(encodings, redis_encoding_id_to_str)
 
-            min_bytes = min(used_bytes)
+            min_bytes = min(used_bytes or [0])
             mean = statistics.mean(used_bytes) if total_elements > 1 else min_bytes
 
             stat_entry = [
@@ -112,7 +112,7 @@ class ValueString(object):
                 aligned / (used_user if used_user > 0 else 1),
                 preferred_encoding,
                 min_bytes,
-                max(used_bytes),
+                max(used_bytes or [0]),
                 mean,
             ]
             key_stat['data'].append(stat_entry)
