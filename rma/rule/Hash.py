@@ -1,5 +1,4 @@
 import statistics
-import pprint
 from itertools import tee
 from tqdm import tqdm
 from rma.redis import *
@@ -46,25 +45,25 @@ class HashStatEntry(object):
             self.fieldMin = min(args2 or [0])
         except Exception: 
             self.fieldMin = 0
-            pprint(args2)
+            print(args2)
         
         try:
             self.fieldMax = max(args3 or [0])
         except Exception: 
             self.fieldMax = 0
-            pprint(args3)
+            print(args3)
 
         try:
             self.valueMin = min(m2 or [0])
         except Exception: 
             self.valueMin = 0
-            pprint(m2)
+            print(m2)
 
         try:
             self.valueMax = max(m3 or [0])
         except Exception: 
             self.valueMax = 0
-            pprint(m3)
+            print(m3)
 
 
 class HashAggregator(object):
